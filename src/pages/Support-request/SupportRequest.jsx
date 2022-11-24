@@ -21,7 +21,7 @@ function SupportRequest() {
               <img src={item.logo} alt="" />
             </Image>
             <Name>
-              <p>{item.name}</p>
+              <Link to='/support-form'>{item.name}</Link>
             </Name>
           </Card>
         ))}
@@ -100,11 +100,11 @@ const Name = styled.div`
   padding: 2%;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  p {
+  a {
     @media (max-width: 768px) {
       font-size: 1rem;
     }
-    font-size: 1.2vw;
+    font-size: 1vw;
     font-weight: 600;
     color: white;
   }

@@ -21,7 +21,7 @@ function ProductEnquiry() {
               <img src={item.logo} alt="" />
             </Image>
             <Name>
-              <p>{item.name}</p>
+              <Link to='/product-form'>{item.name}</Link>
             </Name>
           </Card>
         ))}
