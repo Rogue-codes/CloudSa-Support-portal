@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { supportRequest } from "../../utils/data/data";
-import SupportAccordion from "./supportAccordion";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import SupportAccordion from "./supportAccordion";
 
 function SupportRequest() {
   const variants = {
@@ -26,7 +26,7 @@ function SupportRequest() {
           </Card>
         ))}
       </Flex>
-      <SupportAccordion />
+      <SupportAccordion/>
       <Suggestion>
         <p>Have any suggestions?</p>
         <br />
