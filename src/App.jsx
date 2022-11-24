@@ -53,7 +53,7 @@ function App() {
       <AnimatePresence>
         {preloader && (
           <PreLoaderDiv
-            initial="hidden"
+            initial={true}
             animate="show"
             exit="leave"
             variants={parentVariant}
