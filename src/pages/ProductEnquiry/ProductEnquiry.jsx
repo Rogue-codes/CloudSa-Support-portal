@@ -21,7 +21,7 @@ function ProductEnquiry() {
               <img src={item.logo} alt="" />
             </Image>
             <Name>
-              <Link to='/product-form'>{item.name}</Link>
+              <Link to="/product-form">{item.name}</Link>
             </Name>
           </Card>
         ))}
@@ -52,10 +52,10 @@ const Container = styled(motion.div)`
   }
 `;
 const Flex = styled.div`
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
     flex-direction: column;
     padding: 4%;
-}
+  }
   width: 100%;
   height: auto;
   display: flex;
@@ -65,10 +65,10 @@ const Flex = styled.div`
   flex-wrap: wrap;
 `;
 const Card = styled.div`
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
     width: 100%;
     margin-bottom: 5%;
-}
+  }
   width: 24%;
   height: 30vh;
   margin-bottom: 2%;
@@ -97,9 +97,9 @@ const Name = styled.div`
   padding: 2%;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  p {
+  a {
     @media (max-width: 768px) {
-        font-size: 1rem;
+      font-size: 1rem;
     }
     font-size: 1.2vw;
     font-weight: 600;
@@ -108,10 +108,10 @@ const Name = styled.div`
 `;
 
 const Suggestion = styled.div`
-@media (max-width: 768px) {
-  font-size: 1.2rem;
-  margin: 5%;
-}
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin: 5%;
+  }
   margin: 2%;
   font-size: 1.4vw;
   a {
