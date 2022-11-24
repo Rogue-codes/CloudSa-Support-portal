@@ -3,8 +3,14 @@ import emailjs from "@emailjs/browser";
 // import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 function SolutionsForm() {
+    const variants = {
+        leave:{
+          x:"-100vw"
+        }
+      }
     const formRef = useRef()
     const [done, isDone] = useState(false)
   const emailRegex = RegExp(/^\S+@\S+\.\S+$/);
@@ -45,7 +51,7 @@ function SolutionsForm() {
     },
   });
   return (
-    <Container>
+    <Container exit="leave" variants={variants}>
       <h1>Submit a request</h1>
       <p>We'd like to hear from you</p>
       <Form onSubmit={formik.handleSubmit} ref={formRef}>
@@ -124,7 +130,7 @@ function SolutionsForm() {
 }
 
 export default SolutionsForm;
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 100%;
   height: auto;
   padding: 2% 5%;

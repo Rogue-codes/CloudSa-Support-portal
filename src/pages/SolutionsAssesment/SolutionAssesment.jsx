@@ -3,11 +3,17 @@ import styled from "styled-components";
 import { Assesment } from "../../utils/data/data";
 import { Link } from "react-router-dom";
 import SolutionAssesmentAccordion from "./SolutionAssesmentAccordion";
+import { motion } from "framer-motion";
 // import ProductEnquiryAccordion from "./ProductEnquiryAccordion";
 
 function SolutionAssesment() {
+    const variants = {
+        leave:{
+          x:"-100vw"
+        }
+      }
   return (
-    <Container>
+    <Container exit="leave" variants={variants}>
       <h1 className="head">Solution Assesment</h1>
       <Flex>
         {Assesment.map((item, i) => (
@@ -34,7 +40,7 @@ function SolutionAssesment() {
 
 export default SolutionAssesment;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
   .head {

@@ -3,10 +3,16 @@ import emailjs from "@emailjs/browser";
 // import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 function ProductForm() {
-    const formRef = useRef()
-    const [done, isDone] = useState(false)
+  const variants = {
+    leave: {
+      x: "-100vw",
+    },
+  };
+  const formRef = useRef();
+  const [done, isDone] = useState(false);
   const emailRegex = RegExp(/^\S+@\S+\.\S+$/);
   const formik = useFormik({
     initialValues: {
@@ -16,14 +22,25 @@ function ProductForm() {
       category: "",
     },
     onSubmit: (values) => {
-        emailjs.sendForm('service_0mhvxbd', 'template_ic74q1b', formRef.current, '8RJySH7rZZrTznIBh')
-        .then((result) => {
+      emailjs
+        .sendForm(
+          "service_0mhvxbd",
+          "template_ic74q1b",
+          formRef.current,
+          "8RJySH7rZZrTznIBh"
+        )
+        .then(
+          (result) => {
             console.log(result.text);
-            isDone(true)
-        }, (error) => {
-            console.log(error.text,values);
-        });
-        done? alert(`You mail has been recieved you'll get a feedback from us soon`) : alert("An error occured")
+            isDone(true);
+          },
+          (error) => {
+            console.log(error.text, values);
+          }
+        );
+      done
+        ? alert(`You mail has been recieved you'll get a feedback from us soon`)
+        : alert("An error occured");
     },
     validate: (values) => {
       let errors = {};
@@ -45,7 +62,7 @@ function ProductForm() {
     },
   });
   return (
-    <Container>
+    <Container exit="leave" variants={variants}>
       <h1>Submit a request</h1>
       <p>We'd like to hear from you</p>
       <Form onSubmit={formik.handleSubmit} ref={formRef}>
@@ -123,14 +140,14 @@ function ProductForm() {
 }
 
 export default ProductForm;
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 100%;
   height: auto;
   padding: 2% 5%;
   margin-top: 2%;
   h1 {
     @media (max-width: 768px) {
-        font-size: 2rem;
+      font-size: 2rem;
     }
     font-size: 4vw;
     color: #9c3233;
@@ -139,7 +156,7 @@ const Container = styled.div`
   }
   p {
     @media (max-width: 768px) {
-        font-size: 1rem;
+      font-size: 1rem;
     }
     font-size: 1.5vw;
     text-align: center;
@@ -149,10 +166,10 @@ const Container = styled.div`
   }
 `;
 const Form = styled.form`
-    @media (max-width: 768px) {
-        width: 100%;
-        padding-bottom: 10%;
-    }
+  @media (max-width: 768px) {
+    width: 100%;
+    padding-bottom: 10%;
+  }
   width: 50%;
   margin: 0 auto;
   padding-bottom: 5% 2%;
@@ -160,7 +177,7 @@ const Form = styled.form`
 
   label {
     @media (max-width: 768px) {
-        font-size: .7rem;
+      font-size: 0.7rem;
     }
     display: block;
     margin-top: 5%;
@@ -175,8 +192,8 @@ const Form = styled.form`
   }
   input {
     @media (max-width: 768px) {
-        width: 100%;
-        font-size: 1rem;
+      width: 100%;
+      font-size: 1rem;
     }
     height: 8vh;
     padding: 2%;
@@ -190,8 +207,8 @@ const Form = styled.form`
   }
   select {
     @media (max-width: 768px) {
-        width: 100%;
-        font-size: 1rem;
+      width: 100%;
+      font-size: 1rem;
     }
     height: 8vh;
     padding: 1%;
@@ -205,8 +222,8 @@ const Form = styled.form`
   }
   textarea {
     @media (max-width: 768px) {
-        width: 100%;
-        font-size: 1rem;
+      width: 100%;
+      font-size: 1rem;
     }
     width: 100%;
     padding: 2%;
@@ -217,8 +234,8 @@ const Form = styled.form`
   }
   button {
     @media (max-width: 768px) {
-        width: 100%;
-        font-size: 1.5rem;
+      width: 100%;
+      font-size: 1.5rem;
     }
     width: 60%;
     height: 8vh;

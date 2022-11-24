@@ -3,9 +3,14 @@ import emailjs from "@emailjs/browser";
 // import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import { useRef, useState } from "react";
-import { articles } from "../../../utils/data/articleData";
+import { articles } from "../../utils/data/articleData";
 
 function Submit() {
+  const variants = {
+    leave:{
+      x:"-100vw"
+    }
+  }
   const formRef = useRef();
   const [done, isDone] = useState(false);
   const emailRegex = RegExp(/^\S+@\S+\.\S+$/);
@@ -66,7 +71,7 @@ function Submit() {
         return item
     }return null}) 
   return (
-    <Container>
+    <Container exit="leave" variants={variants}>
       <Left>
         <h1>Submit a request</h1>
         <p>We'd like to hear from you</p>

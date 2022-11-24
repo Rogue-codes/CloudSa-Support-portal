@@ -8,15 +8,10 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
-import Home from "./pages/Home/Home";
 import Nav from "./components/nav/Nav";
-import SupportRequest from "./pages/Support-request/SupportRequest";
-import ProductEnquiry from "./pages/ProductEnquiry/ProductEnquiry";
-import SolutionAssesment from "./pages/SolutionsAssesment/SolutionAssesment";
-import SupportForm from "./pages/Support-request/SupportForm";
-import SolutionsForm from "./pages/SolutionsAssesment/SolutionsForm";
-import ProductForm from "./pages/ProductEnquiry/ProductForm";
-import Submit from "./pages/Support-request/submit/Submit";
+import Routers from "./routing/Routers";
+import ScrollToTop from "./utils/scrollToTop/ScrollToTop";
+
 function App() {
   const [preloader, setPreloader] = useState(true);
   const parentVariant = {
@@ -47,6 +42,7 @@ function App() {
       y: "0vh",
     },
   };
+
   useEffect(() => {
     setTimeout(() => {
       setPreloader(false);
@@ -94,17 +90,9 @@ function App() {
         )}
       </AnimatePresence>
       <Router>
+        <ScrollToTop/>
         <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/support" element={<SupportRequest />} />
-          <Route path="/product-enquiry" element={<ProductEnquiry />} />
-          <Route path="/solutions" element={<SolutionAssesment />} />
-          <Route path="/support-form" element={<SupportForm />} />
-          <Route path="/solution-form" element={<SolutionsForm />} />
-          <Route path="/product-form" element={<ProductForm />} />
-          <Route path="/subit-form" element={<Submit />} />
-        </Routes>
+        <Routers/>
       </Router>
     </div>
   );

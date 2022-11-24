@@ -46,16 +46,16 @@ export const productEnquiryAccordion = [
 
 export const solutionAssesmentAccordion = [
     {
-        questions:"Troubleshoot RDP connection issues ",
-        answer:"https://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection  ",
+        questions:"Unable to verify domain name on Microsoft 365 ",
+        answer:"This will happen if the domain is already verified on another Microsoft account. You’ll need to research and ensure that same domain is not on any .onmicrosoft.com because a domain name can only be verified in a single directory at a time. ",
     },
     {
-        questions:"How to back up a virtual machine   ",
-        answer:"https://learn.microsoft.com/en-us/azure/backup/quick-backup-vm-portal?context=%2Fazure%2Fvirtual-machines%2Fcontext%2Fcontext   ",
+        questions:"Unable to access global admin account",
+        answer:"If you are the global admin, try to reset your password yourself by clicking the 'can't access my account' link when trying to sign in, choose the work or school account this will take you to passwordreset where you can reset your password. If by any chance your organization has another global admin you may ask them to reset your password.",
     },
     {
-        questions:"How to create a virtual network ",
-        answer:"https://learn.microsoft.com/en-us/azure/virtual-network/quick-create-portal  ",
+        questions:"Onedrive storage full",
+        answer:"https://learn.microsoft.com/en-us/microsoft-365/commerce/add-storage-space?WT.mc_id=365AdminCSH_RAVE&view=o365-worldwide#is-my-plan-eligible-for-office-365-extra-file-storage  ",
     },
     {
         questions:"How to create a network security group ",

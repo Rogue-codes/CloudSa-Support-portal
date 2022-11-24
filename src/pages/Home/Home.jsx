@@ -1,10 +1,16 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import background from "../../assets/bg.png";
 function Home() {
+  const variants = {
+    leave:{
+      x:"-100vw"
+    }
+  }
   return (
-    <Container>
+    <Container exit="leave" variants={variants}>
       <div className="flex">
         <p>Welcome to our</p>
         <h1>SUPPORT PORTAL</h1>
@@ -16,7 +22,7 @@ function Home() {
 }
 
 export default Home;
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 100%;
   height: 85vh;
   background: linear-gradient(

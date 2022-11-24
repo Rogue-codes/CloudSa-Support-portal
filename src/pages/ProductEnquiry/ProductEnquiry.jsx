@@ -3,10 +3,16 @@ import styled from "styled-components";
 import { productsEnquiry } from "../../utils/data/data";
 import { Link } from "react-router-dom";
 import ProductEnquiryAccordion from "./ProductEnquiryAccordion";
+import { motion } from "framer-motion";
 
 function ProductEnquiry() {
+    const variants = {
+        leave:{
+          x:"-100vw"
+        }
+      }
   return (
-    <Container>
+    <Container exit="leave" variants={variants}>
       <h1 className="head">Product Enquiry</h1>
       <Flex>
         {productsEnquiry.map((item, i) => (
@@ -33,7 +39,7 @@ function ProductEnquiry() {
 
 export default ProductEnquiry;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
   .head {

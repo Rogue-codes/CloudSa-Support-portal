@@ -3,10 +3,16 @@ import styled from "styled-components";
 import { supportRequest } from "../../utils/data/data";
 import SupportAccordion from "./supportAccordion";
 import {Link} from "react-router-dom"
+import { motion } from "framer-motion";
 
 function SupportRequest() {
+  const variants = {
+    leave:{
+      x:"-100vw"
+    }
+  }
   return (
-    <Container>
+    <Container exit="leave" variants={variants}>
       <h1 className="head">SupportRequest</h1>
       <Flex>
         {supportRequest.map((item, i) => (
@@ -31,7 +37,7 @@ function SupportRequest() {
 
 export default SupportRequest;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
   .head {
