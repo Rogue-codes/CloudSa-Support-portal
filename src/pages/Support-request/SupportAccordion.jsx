@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import styled from "styled-components";
-import { supportAccordion } from "../../utils/data/AccordionData";
+import { supAccordion } from "../../utils/data/AccordionData";
 
 function SupportAccordion() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -18,7 +18,7 @@ function SupportAccordion() {
       <Header>
         <h1>Frequently asked questions</h1>
       </Header>
-      {supportAccordion.map((item, index) => (
+      {supAccordion.map((item, index) => (
         <FAQ key={index}>
           <FaqHead onClick={() => toggleAccordion(index)}>
             <h3>{item.questions}</h3>

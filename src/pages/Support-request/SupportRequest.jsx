@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { supportRequest } from "../../utils/data/data";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import SupportAccordion from "./supportAccordion";
+import SupportAccordion from "./SupportAccordion";
 
 function SupportRequest() {
   const variants = {
