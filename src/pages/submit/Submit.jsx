@@ -7,10 +7,10 @@ import { articles } from "../../utils/data/articleData";
 
 function Submit() {
   const variants = {
-    leave:{
-      x:"-100vw"
-    }
-  }
+    leave: {
+      x: "-100vw",
+    },
+  };
   const formRef = useRef();
   const [done, isDone] = useState(false);
   const emailRegex = RegExp(/^\S+@\S+\.\S+$/);
@@ -62,14 +62,16 @@ function Submit() {
     },
   });
 
-  const [searchVal, setSearchVal] = useState("")
+  const [searchVal, setSearchVal] = useState("");
 
-  const filter = articles.filter( (item) => {
-    if(searchVal === ''){
-        return item
-    }else if(item.q.toLowerCase().includes(searchVal.toLowerCase())){
-        return item
-    }return null}) 
+  const filter = articles.filter((item) => {
+    if (searchVal === "") {
+      return item;
+    } else if (item.q.toLowerCase().includes(searchVal.toLowerCase())) {
+      return item;
+    }
+    return null;
+  });
   return (
     <Container exit="leave" variants={variants}>
       <Left>
@@ -165,19 +167,18 @@ function Submit() {
       <Right>
         <header>
           <label htmlFor="">Search for helpful articles</label>
-          <input type="search" value={searchVal} onChange={(e)=>setSearchVal(e.target.value)} />
+          <input
+            type="search"
+            value={searchVal}
+            onChange={(e) => setSearchVal(e.target.value)}
+          />
         </header>
 
         <main>
           {filter.map((item, i) => (
             <div key={i}>
-              <li className="question">
-                {item.q}
-              </li>
-              <a
-                href={item.a}
-                target="_blank" rel="noopener noreferrer"
-              >
+              <li className="question">{item.q}</li>
+              <a href={item.a} target="_blank" rel="noopener noreferrer">
                 {item.a}
               </a>
             </div>
@@ -190,6 +191,9 @@ function Submit() {
 
 export default Submit;
 const Container = styled.div`
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
   width: 100%;
   height: auto;
   padding: 2% 5%;
@@ -296,15 +300,25 @@ const Form = styled.form`
 `;
 
 const Left = styled.div`
+  @media (max-width: 768px) {
+    width: 100%;
+  }
   width: 48%;
   height: auto;
 `;
 const Right = styled.div`
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
   width: 48%;
   height: 100vh;
   overflow: auto;
   padding: 2%;
   label {
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
     display: block;
     margin-bottom: 2%;
     font-size: 1.7vw;
@@ -312,20 +326,31 @@ const Right = styled.div`
     color: #9c3233;
   }
   input {
+    @media (max-width: 768px) {
+      width: 100%;
+    }
     width: 80%;
     height: 6vh;
     padding: 2%;
-    &:focus{
-        outline: 2px solid #9c3233;
+    &:focus {
+      outline: 2px solid #9c3233;
     }
   }
   main {
     margin-top: 5%;
     li {
+      @media (max-width: 768px) {
+        font-size: 1rem;
+        font-weight: 700;
+      }
       font-size: 1.2vw;
       color: #9c3233;
     }
     a {
+      @media (max-width: 768px) {
+        font-size: .8rem;
+        padding-left: 0%;
+      }
       font-size: 1vw;
       padding-left: 5%;
     }

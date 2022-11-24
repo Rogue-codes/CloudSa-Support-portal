@@ -43,7 +43,7 @@ const Container = styled(motion.div)`
   .flex {
     @media (max-width: 768px) {
       width: 100%;
-      padding: 2%;
+      padding: 5%;
     }
     display: flex;
     justify-content: center;
@@ -51,7 +51,7 @@ const Container = styled(motion.div)`
     flex-direction: column;
     h1 {
       @media (max-width: 768px) {
-        font-size: 4rem;
+        font-size: 3rem;
       }
       font-size: 5vw;
       font-family: "Spectral", serif;
@@ -72,8 +72,10 @@ const Container = styled(motion.div)`
     }
     a {
       @media (max-width: 768px) {
-        width: 50%;
+        width: 70%;
         font-size: 1.2rem;
+        height: 12vh;
+        margin-top: 5%;
       }
       background: #9c3233;
       width: 35%;

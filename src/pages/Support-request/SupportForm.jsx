@@ -229,6 +229,8 @@ const Form = styled.form`
     @media (max-width: 768px) {
         width: 100%;
         font-size: 1.5rem;
+        margin-left: 0%;
+        margin-top: 10%;
     }
     width: 60%;
     height: 8vh;

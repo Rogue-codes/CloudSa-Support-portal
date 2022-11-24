@@ -40,7 +40,8 @@ export default SolutionAssesmentAccordion;
 
 const Container = styled.div`
   @media (max-width: 768px) {
-    width: 100%;
+    width: 90%;
+    margin-left: 5%;
   }
   width: 60%;
   height: auto;
@@ -53,7 +54,7 @@ const Container = styled.div`
 `;
 const Header = styled.div`
   @media (max-width: 768px) {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #9c3233;
   }
   padding: 2% 2%;
@@ -77,13 +78,28 @@ const FaqHead = styled.div`
   &:hover {
     color: #9c3233;
   }
+  h3{
+    @media (max-width: 768px) {
+        font-size: .9rem;
+    }
+  }
 `;
 
 const FaqBody = styled.div`
+@media (max-width: 768px) {
+    width: 90%;
+    margin-left: 5%;
+}
   overflow: hidden;
   max-height: ${(props) => props.ds};
   transition: all 0.5s linear!important;
   a{
+    @media (max-width: 768px) {
+        font-size: .8rem;
+        line-height: 20px;
+        height: auto;
+        margin-left: 0%;
+    }
     line-height: 30px;
     margin-left: 2%;
     margin-bottom: 2%;

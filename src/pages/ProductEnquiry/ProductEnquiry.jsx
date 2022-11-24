@@ -6,11 +6,11 @@ import ProductEnquiryAccordion from "./ProductEnquiryAccordion";
 import { motion } from "framer-motion";
 
 function ProductEnquiry() {
-    const variants = {
-        leave:{
-          x:"-100vw"
-        }
-      }
+  const variants = {
+    leave: {
+      x: "-100vw",
+    },
+  };
   return (
     <Container exit="leave" variants={variants}>
       <h1 className="head">Product Enquiry</h1>
@@ -43,12 +43,19 @@ const Container = styled(motion.div)`
   width: 100%;
   min-height: 100vh;
   .head {
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
     font-size: 3vw;
     color: #9c3233;
     padding: 2%;
   }
 `;
 const Flex = styled.div`
+@media (max-width: 768px) {
+    flex-direction: column;
+    padding: 4%;
+}
   width: 100%;
   height: auto;
   display: flex;
@@ -58,6 +65,10 @@ const Flex = styled.div`
   flex-wrap: wrap;
 `;
 const Card = styled.div`
+@media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 5%;
+}
   width: 24%;
   height: 30vh;
   margin-bottom: 2%;
@@ -87,6 +98,9 @@ const Name = styled.div`
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   p {
+    @media (max-width: 768px) {
+        font-size: 1rem;
+    }
     font-size: 1.2vw;
     font-weight: 600;
     color: white;
@@ -94,6 +108,10 @@ const Name = styled.div`
 `;
 
 const Suggestion = styled.div`
+@media (max-width: 768px) {
+  font-size: 1.2rem;
+  margin: 5%;
+}
   margin: 2%;
   font-size: 1.4vw;
   a {

@@ -13,6 +13,9 @@ function NavButton({ content, link }) {
 export default NavButton;
 
 const Container = styled.button`
+@media (max-width: 768px) {
+  display: none;
+}
   width: 15%;
   font-size: 1.5vw;
   height: 8vh;
