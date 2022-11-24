@@ -5,3 +5,8 @@
   box-sizing: border-box;
   font-family: 'PT Sans', sans-serif;
 }
+.error{
+  text-align: left !important;
+  font-size: 1vw !important;
+  color: red !important;
+}

@@ -94,7 +94,7 @@ function SolutionsForm() {
           name="subject"
           id="subject"
           cols="30"
-          rows="4"
+          rows="10"
         ></textarea>
         {formik.touched.subject && formik.errors.subject ? (
           <p className="error">{formik.errors.subject}</p>
@@ -189,10 +189,8 @@ const Form = styled.form`
     padding: 2%;
     width: 100%;
     display: block;
-    border: none;
-    font-size: 1vw;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border: .5px solid #9c3233;
+    font-size: 1.3vw;
     border-radius: 5px;
   }
   select {
@@ -204,10 +202,8 @@ const Form = styled.form`
     padding: 1%;
     width: 100%;
     display: block;
-    border: none;
-    font-size: 1vw;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border: .5px solid #9c3233;
+    font-size: 1.3vw;
     border-radius: 5px;
   }
   textarea {
@@ -217,10 +213,9 @@ const Form = styled.form`
     }
     width: 100%;
     padding: 2%;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border: .5px solid #9c3233;
     border-radius: 5px;
+    font-size: 1.3vw;
   }
   button {
     @media (max-width: 768px) {
@@ -231,12 +226,11 @@ const Form = styled.form`
     }
     width: 60%;
     height: 8vh;
-    margin-left: 20%;
     font-size: 1.5vw;
     margin-top: 4%;
     background: #9c3233;
     color: #fff;
-    border-radius: 10px;
+    border-radius: 5px;
     border: none;
   }
 `;

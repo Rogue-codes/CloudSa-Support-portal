@@ -54,7 +54,7 @@ const Container = styled.div`
 `;
 const Header = styled.div`
   @media (max-width: 768px) {
-    font-size: 0.7rem;
+    font-size: 1.5rem;
     color: #9c3233;
   }
   padding: 2% 2%;
@@ -64,7 +64,7 @@ const Header = styled.div`
 `;
 const FAQ = styled.div`
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 1.5rem;
   }
   font-size: 1.2vw;
 `;
@@ -80,7 +80,7 @@ const FaqHead = styled.div`
   }
   h3 {
     @media (max-width: 768px) {
-      font-size: 0.9rem;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -95,7 +95,7 @@ const FaqBody = styled.div`
   transition: all 0.5s linear !important;
   a {
     @media (max-width: 768px) {
-      font-size: 0.8rem;
+      font-size: 1.3rem;
       line-height: 20px;
       height: auto;
       margin-left: 0%;
