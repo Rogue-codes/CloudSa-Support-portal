@@ -49,7 +49,8 @@ function SupportForm() {
       }
       return errors;
     },
-  });
+  }); 
+
   return (
     <Container exit="leave" variants={variants}>
       <h1>Submit a request</h1>
