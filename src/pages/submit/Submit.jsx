@@ -14,6 +14,7 @@ function Submit() {
   const formRef = useRef();
   const [done, isDone] = useState(false);
   const emailRegex = RegExp(/^\S+@\S+\.\S+$/);
+  console.log(done)
   const formik = useFormik({
     initialValues: {
       companyName: "",
@@ -24,10 +25,10 @@ function Submit() {
     onSubmit: (values) => {
       emailjs
         .sendForm(
-          "service_0mhvxbd",
-          "template_ic74q1b",
+          "service_vfex6xu",
+          "template_ciq4lra",
           formRef.current,
-          "8RJySH7rZZrTznIBh"
+          "yV9Ix2Y3kxhmIvIQr"
         )
         .then(
           (result) => {

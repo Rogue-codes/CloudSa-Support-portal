@@ -63,7 +63,7 @@ function ProductForm() {
   });
   return (
     <Container exit="leave" variants={variants}>
-      <h1>Submit a request</h1>
+      <h1>Submit your Enquiry</h1>
       <p>We'd like to hear from you</p>
       <Form onSubmit={formik.handleSubmit} ref={formRef}>
         <label htmlFor="">Company Name</label>
