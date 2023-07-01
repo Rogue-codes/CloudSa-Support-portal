@@ -9,6 +9,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import Nav from "./components/nav/Nav";
+import Whatsapp from '../../CloudSa-Support-portal/src/components/Whatsapp'
 import Routers from "./routing/Routers";
 import ScrollToTop from "./utils/scrollToTop/ScrollToTop";
 
@@ -91,6 +92,7 @@ function App() {
       </AnimatePresence>
       <Router>
         <ScrollToTop/>
+        <Whatsapp/>
         <Nav />
         <Routers/>
       </Router>
