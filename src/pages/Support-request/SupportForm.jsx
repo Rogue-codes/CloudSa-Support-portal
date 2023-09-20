@@ -4,58 +4,95 @@ import emailjs from "@emailjs/browser";
 import { useFormik } from "formik";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function SupportForm() {
-    const variants = {
-        leave:{
-          x:"-100vw"
-        }
-      }
-    const formRef = useRef()
-    const [done, isDone] = useState(false)
+  const variants = {
+    leave: {
+      x: "-100vw",
+    },
+  };
+  const formRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
   const emailRegex = RegExp(/^\S+@\S+\.\S+$/);
   const formik = useFormik({
     initialValues: {
+      name: "",
       companyName: "",
       email: "",
-      subject: "",
+      phone: "",
       category: "",
+      description: "",
     },
-    onSubmit: (values) => {
-        emailjs.sendForm('service_0mhvxbd', 'template_ic74q1b', formRef.current, '8RJySH7rZZrTznIBh')
-        .then((result) => {
-            console.log(result.text);
-            isDone(true)
-        }, (error) => {
-            console.log(error.text,values);
-        });
-        done? alert(`You mail has been recieved you'll get a feedback from us soon`) : alert("An error occured")
+    onSubmit: async (values) => {
+      setIsLoading(true);
+      const { name, companyName, email, phone, category, description } = values;
+      try {
+        const res = await axios.post(
+          "https://cloudsa-portal.onrender.com/api/v1/cloudSa-africa/request/send",
+          {
+            name,
+            companyName,
+            companyEmail: email,
+            phone,
+            category,
+            description,
+          }
+        );
+        setIsLoading(false);
+        toast.success(res?.data?.message);
+      } catch (error) {
+        setIsLoading(false);
+        toast.success("An error occured please try again");
+        console.log(error);
+      }
     },
     validate: (values) => {
       let errors = {};
+      if (!values.name) {
+        errors.name = "Name is Required";
+      }
       if (!values.companyName) {
-        errors.companyName = "Required";
+        errors.companyName = "Company name is Required";
       }
       if (!values.email) {
         errors.email = "Required";
       } else if (!emailRegex.test(values.email)) {
         errors.email = "Invalid email address";
       }
-      if (!values.subject) {
-        errors.subject = "Required";
+      if (!values.phone) {
+        errors.phone = "Phone number is Required";
+      }
+      if (!values.description) {
+        errors.description = "Subject is Required";
       }
       if (!values.category) {
-        errors.category = "Required";
+        errors.category = "Category is Required";
       }
       return errors;
     },
-  }); 
+  });
 
   return (
     <Container exit="leave" variants={variants}>
       <h1>Submit a request</h1>
       <p>We'd like to hear from you</p>
       <Form onSubmit={formik.handleSubmit} ref={formRef}>
+        <label htmlFor="">Name</label>
+        <input
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          type="text"
+          name="name"
+          id="name"
+        />
+        {formik.touched.name && formik.errors.name ? (
+          <p className="error">{formik.errors.name}</p>
+        ) : (
+          ""
+        )}
+
         <label htmlFor="">Company Name</label>
         <input
           value={formik.values.companyName}
@@ -71,7 +108,7 @@ function SupportForm() {
         )}
 
         <label htmlFor="">
-          Email Address <span>*</span>
+          Company Email Address <span>*</span>
         </label>
         <input
           value={formik.values.email}
@@ -87,18 +124,34 @@ function SupportForm() {
         )}
 
         <label htmlFor="">
+          Phone <span>*</span>
+        </label>
+        <input
+          value={formik.values.phone}
+          onChange={formik.handleChange}
+          type="text"
+          name="phone"
+          id="phone"
+        />
+        {formik.touched.phone && formik.errors.phone ? (
+          <p className="error">{formik.errors.phone}</p>
+        ) : (
+          ""
+        )}
+
+        <label htmlFor="">
           Subject<span>*</span>
         </label>
         <textarea
-          value={formik.values.subject}
+          value={formik.values.description}
           onChange={formik.handleChange}
-          name="subject"
-          id="subject"
+          name="description"
+          id="description"
           cols="30"
           rows="10"
         ></textarea>
-        {formik.touched.subject && formik.errors.subject ? (
-          <p className="error">{formik.errors.subject}</p>
+        {formik.touched.description && formik.errors.description ? (
+          <p className="error">{formik.errors.description}</p>
         ) : (
           ""
         )}
@@ -127,7 +180,7 @@ function SupportForm() {
         ) : (
           ""
         )}
-        <button type="submit">Submit</button>
+        <button type="submit">{isLoading?"loading...":"Submit"}</button>
       </Form>
     </Container>
   );
@@ -141,7 +194,7 @@ const Container = styled(motion.div)`
   margin-top: 2%;
   h1 {
     @media (max-width: 768px) {
-        font-size: 2rem;
+      font-size: 2rem;
     }
     font-size: 4vw;
     color: #9c3233;
@@ -150,7 +203,7 @@ const Container = styled(motion.div)`
   }
   p {
     @media (max-width: 768px) {
-        font-size: 1rem;
+      font-size: 1rem;
     }
     font-size: 1.5vw;
     text-align: center;
@@ -160,10 +213,10 @@ const Container = styled(motion.div)`
   }
 `;
 const Form = styled.form`
-    @media (max-width: 768px) {
-        width: 100%;
-        padding-bottom: 10%;
-    }
+  @media (max-width: 768px) {
+    width: 100%;
+    padding-bottom: 10%;
+  }
   width: 50%;
   margin: 0 auto;
   padding-bottom: 5% 2%;
@@ -171,7 +224,7 @@ const Form = styled.form`
 
   label {
     @media (max-width: 768px) {
-        font-size: .7rem;
+      font-size: 0.7rem;
     }
     display: block;
     margin-top: 5%;
@@ -186,47 +239,47 @@ const Form = styled.form`
   }
   input {
     @media (max-width: 768px) {
-        width: 100%;
-        font-size: 1rem;
+      width: 100%;
+      font-size: 1rem;
     }
     height: 8vh;
     padding: 2%;
     width: 100%;
     display: block;
-    border: .5px solid #9c3233;
+    border: 0.5px solid #9c3233;
     font-size: 1.3vw;
     border-radius: 5px;
   }
   select {
     @media (max-width: 768px) {
-        width: 100%;
-        font-size: 1rem;
+      width: 100%;
+      font-size: 1rem;
     }
     height: 8vh;
     padding: 1%;
     width: 100%;
     display: block;
-    border: .5px solid #9c3233;
+    border: 0.5px solid #9c3233;
     font-size: 1.3vw;
     border-radius: 5px;
   }
   textarea {
     @media (max-width: 768px) {
-        width: 100%;
-        font-size: 1rem;
+      width: 100%;
+      font-size: 1rem;
     }
     width: 100%;
     padding: 2%;
-    border: .5px solid #9c3233;
+    border: 0.5px solid #9c3233;
     border-radius: 5px;
     font-size: 1.3vw;
   }
   button {
     @media (max-width: 768px) {
-        width: 100%;
-        font-size: 1.5rem;
-        margin-left: 0%;
-        margin-top: 10%;
+      width: 100%;
+      font-size: 1.5rem;
+      margin-left: 0%;
+      margin-top: 10%;
     }
     width: 60%;
     height: 8vh;
@@ -236,5 +289,6 @@ const Form = styled.form`
     color: #fff;
     border-radius: 5px;
     border: none;
+    cursor: pointer;
   }
 `;

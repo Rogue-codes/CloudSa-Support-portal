@@ -9,9 +9,11 @@ import {
   useNavigate,
 } from "react-router-dom";
 import Nav from "./components/nav/Nav";
-import Whatsapp from '../../CloudSa-Support-portal/src/components/Whatsapp'
+import Whatsapp from "../../CloudSa-Support-portal/src/components/Whatsapp";
 import Routers from "./routing/Routers";
 import ScrollToTop from "./utils/scrollToTop/ScrollToTop";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [preloader, setPreloader] = useState(true);
@@ -66,7 +68,7 @@ function App() {
               transition={{
                 delay: 1,
                 duration: 3,
-                damping:50,
+                damping: 50,
                 type: "spring",
                 stiffness: "200",
               }}
@@ -79,7 +81,7 @@ function App() {
               animate="show"
               transition={{
                 delay: 1.5,
-                damping:50,
+                damping: 50,
                 duration: 3,
                 type: "spring",
                 stiffness: "200",
@@ -91,10 +93,11 @@ function App() {
         )}
       </AnimatePresence>
       <Router>
-        <ScrollToTop/>
-        <Whatsapp/>
+        <ScrollToTop />
+        <Whatsapp />
         <Nav />
-        <Routers/>
+        <Routers />
+        <ToastContainer />
       </Router>
     </div>
   );
