@@ -29,7 +29,7 @@ function Nav() {
         <Link to="/product-enquiry">Product Enquiry</Link>
         <Link to="/solutions">Solutions Assessment</Link>
       </Links>
-      <NavButton link="/subit-form" content="Submit request" />
+      <NavButton link="/support-form" content="Submit request" />
 
       <div
         className={
@@ -62,7 +62,7 @@ function Nav() {
           Solution Assessment
         </Link>
         <button className="get-started" onClick={toggleMenu}>
-          <Link to="/subit-form">submit request</Link>
+          <Link to="/support-form">submit request</Link>
         </button>
       </Wrapper>
     </Container>
