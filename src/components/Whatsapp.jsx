@@ -4,7 +4,7 @@ import styled from "styled-components";
 import whatsapp from "../assets/whatsapp.png";
 
 
-function Whatsapp() {
+export default function Whatsapp() {
   return (
     <Container>
       <a href="https://api.whatsapp.com/send?phone=2348108969965"><img src={whatsapp} alt="" /></a>
@@ -12,7 +12,6 @@ function Whatsapp() {
   );
 }
 
-export default Whatsapp;
 
 const Container = styled.div`
   position: fixed;
