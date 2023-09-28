@@ -24,28 +24,40 @@ function SupportForm() {
       phone: "",
       category: "",
       description: "",
+      attachment: null, // Add the file field to initialValues
     },
     onSubmit: async (values) => {
       setIsLoading(true);
-      const { name, companyName, email, phone, category, description } = values;
+      const { name, companyName, email, phone, category, description, attachment } =
+        values; // Get the file from values
       try {
+        const formData = new FormData(); // Create a FormData object to send the file
+        formData.append("name", name);
+        formData.append("companyName", companyName);
+        formData.append("companyEmail", email);
+        formData.append("phone", phone);
+        formData.append("category", category);
+        formData.append("description", description);
+        formData.append("attachment", attachment); // Append the file to the FormData  
+        console.log(formData);
         const res = await axios.post(
           "https://cloudsa-portal.onrender.com/api/v1/cloudSa-africa/request/send",
+          formData, // Send the FormData with the file
+
           {
-            name,
-            companyName,
-            companyEmail: email,
-            phone,
-            category,
-            description,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
           }
         );
+
         setIsLoading(false);
+
         toast.success(res?.data?.message);
       } catch (error) {
         setIsLoading(false);
-        toast.success("An error occured please try again");
-        console.log(error);
+        toast.error("An error occurred, please try again");
+        console.error(error);
       }
     },
     validate: (values) => {
@@ -78,7 +90,11 @@ function SupportForm() {
     <Container exit="leave" variants={variants}>
       <h1>Submit a request</h1>
       <p>We'd like to hear from you</p>
-      <Form onSubmit={formik.handleSubmit} ref={formRef}>
+      <Form
+        onSubmit={formik.handleSubmit}
+        ref={formRef}
+        encType="multipart/form-data"
+      >
         <label htmlFor="">Name</label>
         <input
           value={formik.values.name}
@@ -180,7 +196,19 @@ function SupportForm() {
         ) : (
           ""
         )}
-        <button type="submit">{isLoading?"loading...":"Submit"}</button>
+
+        <label htmlFor="">Attach File</label>
+        <input
+          type="file"
+          accept=".pdf, .doc, .docx"
+          onChange={(event) =>
+            formik.setFieldValue("attachment", event.currentTarget.files[0])
+          }
+          name="attachment" // Make sure the name attribute is "attachment"
+          id="file"
+        />
+
+        <button type="submit">{isLoading ? "loading..." : "Submit"}</button>
       </Form>
     </Container>
   );
